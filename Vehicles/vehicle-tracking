@@ -1,0 +1,52 @@
+// Constants and variables
+const API_URL = 'http://localhost:8080/api';
+let vehicles = [];
+
+// Fetch vehicles from the backend API
+function fetchVehicles() {
+    fetch(`${API_URL}/vehicles`)
+        .then(response => response.json())
+        .then(data => {
+            vehicles = data;
+            updateVehicleList();
+        })
+        .catch(error => console.error(error));
+}
+
+// Update the vehicle list in the UI
+function updateVehicleList() {
+    const vehicleListElement = document.getElementById('vehicle-list');
+    vehicleListElement.innerHTML = '';
+
+    vehicles.forEach(vehicle => {
+        const vehicleElement = document.createElement('li');
+        vehicleElement.textContent = `Vehicle ID: ${vehicle.id}, Location: (${vehicle.latitude}, ${vehicle.longitude})`;
+        vehicleListElement.appendChild(vehicleElement);
+    });
+}
+
+// Track a vehicle's location
+function trackVehicleLocation(vehicleId) {
+    fetch(`${API_URL}/vehicles/${vehicleId}/location`)
+        .then(response => response.json())
+        .then(data => {
+            const vehicle = vehicles.find(v => v.id === data.id);
+            vehicle.latitude = data.latitude;
+            vehicle.longitude = data.longitude;
+            updateVehicleList();
+        })
+        .catch(error => console.error(error));
+}
+
+// Initialize the vehicle tracking system
+function initVehicleTrackingSystem() {
+    fetchVehicles();
+}
+
+// Add an event listener to track a vehicle on button click
+document.getElementById('track-vehicle-btn').addEventListener('click', () => {
+    const vehicleId = document.getElementById('vehicle-select').value;
+    trackVehicleLocation(vehicleId);
+});
+
+initVehicleTrackingSystem();

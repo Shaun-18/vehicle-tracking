@@ -1,0 +1,65 @@
+
+body {
+    font-family: Roboto, sans-serif;
+   background-image: url(https://trackmywheels.co.za/wp-content/uploads/2022/08/GPS-tracker-image-e1660301607727.jpg);
+   background-size: cover ;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+
+
+}
+  
+  h1 {
+    text-align: center;
+  }
+  
+  /* Form styles */
+  form {
+    width: 50%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
+  }
+  
+  label {
+    display: block;
+    margin-top: 10px;
+    font-weight: 600;
+  }
+  
+  input[type="text"],
+  input[type="number"] {
+    background-color:aliceblue;
+    border-radius: 0vi;
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f60000;
+    color: #fff;
+    border: 0;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  button:hover{
+    background-color: blue;
+  }
+  
+  /* Map container styles */
+  #mapContainer {
+    width: 120%;
+    height: 500px;
+    margin-top: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+  }
